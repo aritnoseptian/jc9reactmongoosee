@@ -55,7 +55,7 @@ export const keepLogin = (user) => {
     }
 }
 
-export const onLogout = () => {
+export const onLogoutuser = () => {
     cookie.remove('dataUser')
     return {
         type: 'LOGOUT_SUCCESS' 
