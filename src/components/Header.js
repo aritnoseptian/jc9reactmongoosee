@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {onLogoutuser} from '../action'
 import {
     Button,
     Collapse,
@@ -26,6 +27,11 @@ class Header extends Component {
         dropdownOpen: !prevState.dropdownOpen
     }));
     }
+
+    onButtonclick = () => {
+            this.props.onLogoutuser()
+    }
+    
 
     render(){
         // Jika belum login
@@ -75,7 +81,7 @@ class Header extends Component {
                                 <DropdownItem>Edit Profile</DropdownItem>
                             </Link>
                             <DropdownItem divider />
-                            <Button className="dropdown-item" >
+                            <Button className="dropdown-item" onClick={this.onButtonclick}>
                                 Log out
                             </Button>
                             
@@ -96,4 +102,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Header)
+export default connect(mapStateToProps,{onLogoutuser})(Header)
